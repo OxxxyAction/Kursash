@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Kursash</string>
+    <string name="app_title">Simple Image Manager</string>
+
+    <string name="registration">Регистрация</string>
+
+
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>

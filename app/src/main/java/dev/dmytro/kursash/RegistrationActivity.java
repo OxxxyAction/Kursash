@@ -1,7 +1,9 @@
 package dev.dmytro.kursash;
 
+import android.app.Activity;
+
 /**
  * Created by Dmytro on 13.12.2015.
  */
-public class RegistrationActivity {
+public class RegistrationActivity extends Activity {
 }

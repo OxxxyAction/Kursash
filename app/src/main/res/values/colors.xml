@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="toolBarColor">#ffeebc7e</color>
+
+    <color name="white">#fff</color>
+    <color name="tenderorange">#ffeebc7e</color>
+
+
+    <color name="btn_pressed">#ffa1a1a1</color>
+    <color name="btn_default">#ffeebc7e</color>
+    <color name="btn_disable">#ff9f8044</color>
+
+</resources>
