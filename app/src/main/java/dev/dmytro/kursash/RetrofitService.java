@@ -1,6 +1,7 @@
 package dev.dmytro.kursash;
 
 import dev.dmytro.kursash.QueryObjects.CustomResponse;
+import dev.dmytro.kursash.QueryObjects.Profile;
 import dev.dmytro.kursash.QueryObjects.User;
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -26,4 +27,15 @@ public class RetrofitService {
         service.login(login, password, callback);
     }
 
+    public void getProfile(int id, Callback<Profile> callback){
+        service.getProfile(id, token, callback);
+    }
+
+    public void sendEmail(String email, Callback<CustomResponse> callback){
+        service.sendEmail(email, callback);
+    }
+
+    public void changeProfile(Profile profile, int id, Callback<Profile> callback){
+        service.changeProfile(id, token, profile, callback);
+    }
 }

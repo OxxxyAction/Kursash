@@ -18,6 +18,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".MyProfileActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".RecoveryActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".RecoveryCodeActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".ChangingMyProfile" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+
     </application>
 
 </manifest>

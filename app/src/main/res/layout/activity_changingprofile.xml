@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/reportToolBar"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="@color/toolBarColor"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize"
+        android:transitionName="actionBar">
+
+        <Button
+            android:id="@+id/btn_back_changeprofile"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/arrow_back"
+            android:scaleType="centerCrop"
+            android:layout_gravity="start|center_horizontal"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:text="Мой профиль"
+            android:textSize="30sp"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Имя"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/black"/>
+            <EditText
+                android:id="@+id/edt_profile_name"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:gravity="center"
+                android:background="@drawable/edt_shape"
+                android:padding="5dp"
+                />
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Ошибка"
+                android:id="@+id/txtView_changeprofile_err_name"
+                android:textSize="15sp"
+                android:textColor="#ffff353d"
+                android:gravity="center_horizontal"
+                android:visibility="gone"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Фамилия"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/black"/>
+            <EditText
+                android:id="@+id/edt_profile_lastname"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:gravity="center"
+                android:background="@drawable/edt_shape"
+                android:padding="5dp"
+                />
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Ошибка"
+                android:id="@+id/txtView_changeprofile_err_lastname"
+                android:textSize="15sp"
+                android:textColor="#ffff353d"
+                android:gravity="center_horizontal"
+                android:visibility="gone"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Почта"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/black"/>
+            <EditText
+                android:id="@+id/edt_profile_email"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:singleLine="true"
+                android:background="@drawable/edt_shape"
+                android:padding="5dp"
+                />
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Ошибка"
+                android:id="@+id/txtView_changeprofile_err_email"
+                android:textSize="15sp"
+                android:textColor="#ffff353d"
+                android:gravity="center_horizontal"
+                android:visibility="gone"
+                android:layout_gravity="center_horizontal"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:text="Возраст"
+                android:textColor="@color/black"/>
+            <EditText
+                android:id="@+id/edt_profile_age"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:singleLine="true"
+                android:background="@drawable/edt_shape"
+                android:padding="5dp"
+                />
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Ошибка"
+                android:id="@+id/txtView_changeprofile_err_age"
+                android:textSize="15sp"
+                android:textColor="#ffff353d"
+                android:gravity="center_horizontal"
+                android:visibility="gone"
+                android:layout_gravity="center_horizontal"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:text="Пол"
+                android:textColor="@color/black"/>
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/radioSex"
+                android:paddingRight="20dp">
+
+                <RadioButton
+                    android:id="@+id/radioSexMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Мужчина"/>
+                <RadioButton
+                    android:id="@+id/radioSexFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Женщина"
+                    />
+            </RadioGroup>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Сохранить"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:textColor="@color/white"
+        android:background="@drawable/buttonselector"
+        android:id="@+id/btn_changeprofile_save" />
+</LinearLayout>
