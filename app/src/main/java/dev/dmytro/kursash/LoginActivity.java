@@ -59,6 +59,7 @@ public class LoginActivity extends Activity {
                             RetrofitService.token = user.getAccessToken();
                             Intent intent = new Intent(ctx, ProfileActivity.class);
                             intent.putExtra("id", user.getId());
+                            finish();
                             startActivity(intent);
                         }
 

@@ -36,4 +36,14 @@ public interface RetrofitApi {
     @FormUrlEncoded
     @PUT("/profiles/{id}")
     public void changeProfile(@Path("id") int id, @Query("access_token") String token, @Body Profile profile, Callback<Profile> callback);
+
+    @FormUrlEncoded
+    @POST("/recover")
+    public void sendCodeAndPass(@Field("password") String password, @Field("secret_key") String code, Callback<CustomResponse> callback);
+
+
+    @FormUrlEncoded
+    @POST("/register")
+    public void register(@Field("username") String username, @Field("email") String email, @Field("password") String password, Callback<CustomResponse> callback);
+
 }

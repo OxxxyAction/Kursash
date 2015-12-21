@@ -1,6 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        >
 
-</LinearLayout>
+        <LinearLayout
+            android:id="@+id/layoutloginmain"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolBar_reg"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/toolBarColor"
+                android:elevation="4dp"
+                android:minHeight="?attr/actionBarSize"
+                android:transitionName="actionBar">
+
+                <Button
+                    android:id="@+id/btn_back_registration_activity"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/arrow_back"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="start|center_horizontal"
+
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    android:text="@string/app_title"
+                    android:textSize="30sp"/>
+
+            </android.support.v7.widget.Toolbar>
+
+            <ScrollView
+                android:id="@+id/scrollView_reg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusableInTouchMode="true" >
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="РЕГИСТРАЦИЯ"
+                        android:id="@+id/txtView_reg_text"
+                        android:textSize="30sp"
+                        android:textColor="#000"
+                        android:layout_marginTop="20dp"
+                        android:layout_gravity="center_horizontal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Для регистрации в приложении заполните соответствующие поля"
+                        android:id="@+id/txtView_reg_description"
+                        android:textSize="15sp"
+                        android:textColor="#000"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_horizontal"
+                        android:layout_gravity="center_horizontal" />
+                    <EditText
+                        android:layout_width="250dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/edt_reg_login"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edt_shape"
+                        android:paddingLeft="10dp"
+                        android:drawablePadding="10dp"
+                        android:layout_marginTop="10dp"
+                        android:hint="Логин"
+                        />
+
+                    <TextView
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="Данный Логин уже занят"
+                        android:id="@+id/txtView_reg_login"
+                        android:textSize="15sp"
+                        android:textColor="#ffff353d"
+                        android:gravity="center_horizontal"
+                        android:visibility="gone"
+                        android:layout_gravity="center_horizontal"/>
+
+
+
+                    <TextView
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:id="@+id/txtView_reg_err_sex"
+                        android:textSize="15sp"
+                        android:textColor="#ffff353d"
+                        android:gravity="center_horizontal"
+                        android:visibility="gone"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <EditText
+                        android:layout_width="250dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/edt_reg_mail"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edt_shape"
+                        android:paddingLeft="10dp"
+                        android:drawablePadding="10dp"
+                        android:layout_marginTop="10dp"
+                        android:inputType="textEmailAddress"
+                        android:hint="Почтовый ящик (email)" />
+
+                    <TextView
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="Данная почта уже зарегистрированна"
+                        android:id="@+id/txtView_reg_err_email"
+                        android:textSize="15sp"
+                        android:textColor="#ffff353d"
+                        android:gravity="center_horizontal"
+                        android:visibility="gone"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <EditText
+                        android:layout_width="250dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/edt_reg_pass_first"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edt_shape"
+                        android:paddingLeft="10dp"
+                        android:hint="Пароль"
+                        android:inputType="textPassword"
+                        android:layout_marginTop="10dp"
+                        android:ems="10" />
+
+
+
+                    <!--<EditText
+                        android:layout_width="250dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/edt_reg_pass_second"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edt_shape"
+                        android:paddingLeft="10dp"
+                        android:hint="Повторите пароль"
+                        android:inputType="textPassword"
+                        android:layout_marginTop="10dp"
+                        android:ems="10" />-->
+
+                    <TextView
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="Пароли должны совпадать"
+                        android:id="@+id/txtView_reg_err_pass"
+                        android:textSize="15sp"
+                        android:textColor="#ffff353d"
+                        android:gravity="center_horizontal"
+                        android:visibility="gone"
+                        android:layout_gravity="center_horizontal"/>
+
+
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="ЗАРЕГИСТРИРОВАТЬСЯ"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white"
+                        android:background="@drawable/buttonselector"
+                        android:id="@+id/btn_reg_send" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+
+        </LinearLayout>
+
+
+
+
+
+
+    </FrameLayout>

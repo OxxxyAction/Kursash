@@ -38,32 +38,41 @@ public class RecoveryActivity extends Activity {
         txtViewError = (TextView) findViewById(R.id.txtView_recovery_err);
         service = new RetrofitService();
 
+        findViewById(R.id.btn_back_recovery_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         findViewById(R.id.btn_recovery_send).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 service.sendEmail(edt.getText().toString(), new Callback<CustomResponse>() {
                     @Override
                     public void success(CustomResponse customResponse, Response response) {
-                        if(customResponse.getSuccess())
-                        {
+                        if (customResponse.isSendMsg()) {
                             Intent intent = new Intent(ctx, RecoveryCodeActivity.class);
+                            finish();
                             startActivity(intent);
                         }
                     }
+
                     @Override
                     public void failure(RetrofitError error) {
-                        Type type = new TypeToken<List<ValidationClass>>() {}.getType();
+                        Type type = new TypeToken<List<ValidationClass>>() {
+                        }.getType();
                         List<ValidationClass> arr = (List<ValidationClass>) error.getBodyAs(type);
-                        String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
+                        String json = new String(((TypedByteArray) error.getResponse().getBody()).getBytes());
                         Log.d("Retrofit", json.toString());
-                        if(error!=null && arr.size()>0) {
+                        if (error != null && arr.size() > 0) {
 
                             txtViewError.setVisibility(View.VISIBLE);
                             txtViewError.setText("");
                             for (int i = 0; i < arr.size(); i++) {
                                 txtViewError.append(arr.get(i).getMessage() + "\n");
                             }
-                        }else{
+                        } else {
                             txtViewError.setVisibility(View.VISIBLE);
                             txtViewError.setText("Не удалось подключиться к серверу, попробуйте позже");
                         }
