@@ -1,6 +1,8 @@
 package dev.dmytro.kursash;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -21,12 +24,15 @@ public class MyProfileActivity extends Activity {
 
     TextView name, lastname, email, gender, age;
     RetrofitService service;
+    ProgressDialog pd;
+    Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myprofile);
-
+        ctx = this;
+        pd = ProgressDialog.show(ctx, "", "Загрузка...", true);
 
         name = (TextView) findViewById(R.id.txtView_profile_firstname);
         lastname = (TextView) findViewById(R.id.txtView_profile_lastname);
@@ -54,11 +60,13 @@ public class MyProfileActivity extends Activity {
                 email.setText(profile.getEmail());
                 gender.setText(profile.getGender());
                 age.setText(profile.getAge()+"");
+                pd.dismiss();
             }
 
             @Override
             public void failure(RetrofitError error) {
-
+                pd.dismiss();
+                Toast.makeText(ctx, "Не удалось загрузить страницу =(", Toast.LENGTH_SHORT).show();
             }
         });
 

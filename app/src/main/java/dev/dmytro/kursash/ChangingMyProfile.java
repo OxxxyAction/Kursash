@@ -3,6 +3,7 @@ package dev.dmytro.kursash;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -11,6 +12,7 @@ import dev.dmytro.kursash.QueryObjects.Profile;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import retrofit.mime.TypedByteArray;
 
 /**
  * Created by Dmytro on 17.12.2015.
@@ -31,6 +33,15 @@ public class ChangingMyProfile extends Activity{
 
 
         service = new RetrofitService();
+
+        findViewById(R.id.btn_back_changeprofile).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+
         findViewById(R.id.btn_changeprofile_save).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,7 +62,8 @@ public class ChangingMyProfile extends Activity{
 
                     @Override
                     public void failure(RetrofitError error) {
-
+                        String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
+                        Log.d("Retrofit", json.toString());
                     }
                 });
             }

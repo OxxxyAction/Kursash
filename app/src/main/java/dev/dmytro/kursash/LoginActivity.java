@@ -1,6 +1,7 @@
 package dev.dmytro.kursash;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ public class LoginActivity extends Activity {
     EditText edtLogin, edtPassword;
     TextView txtViewError;
     Context ctx;
+    ProgressDialog pd;
     RetrofitService service;
 
     @Override
@@ -48,11 +50,13 @@ public class LoginActivity extends Activity {
 
             @Override
             public void onClick(View view) {
+
                 txtViewError.setVisibility(View.GONE);
                 Log.d("Retrofit",  edtPassword.getText().toString() +"  " +  edtLogin.getText().toString());
                 if(edtLogin.getText().toString().equalsIgnoreCase("") && edtPassword.getText().toString().equalsIgnoreCase(""))
                     txtViewError.setVisibility(View.VISIBLE);
                 else{
+                    pd = ProgressDialog.show(LoginActivity.this,"","Загрузка...", true);
                     service.login(edtLogin.getText().toString(), edtPassword.getText().toString(), new Callback<User>() {
                         @Override
                         public void success(User user, Response response) {
@@ -60,11 +64,13 @@ public class LoginActivity extends Activity {
                             Intent intent = new Intent(ctx, ProfileActivity.class);
                             intent.putExtra("id", user.getId());
                             finish();
+                            pd.dismiss();
                             startActivity(intent);
                         }
 
                         @Override
                         public void failure(RetrofitError error) {
+                            pd.dismiss();
                             Type type = new TypeToken<List<ValidationClass>>() {}.getType();
                             List<ValidationClass> arr = (List<ValidationClass>) error.getBodyAs(type);
                             String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());

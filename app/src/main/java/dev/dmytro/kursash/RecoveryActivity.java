@@ -48,6 +48,7 @@ public class RecoveryActivity extends Activity {
         findViewById(R.id.btn_recovery_send).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                txtViewError.setVisibility(View.GONE);
                 service.sendEmail(edt.getText().toString(), new Callback<CustomResponse>() {
                     @Override
                     public void success(CustomResponse customResponse, Response response) {
