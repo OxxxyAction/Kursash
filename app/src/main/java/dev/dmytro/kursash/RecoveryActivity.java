@@ -52,7 +52,7 @@ public class RecoveryActivity extends Activity {
                 service.sendEmail(edt.getText().toString(), new Callback<CustomResponse>() {
                     @Override
                     public void success(CustomResponse customResponse, Response response) {
-                        if (customResponse.isSendMsg()) {
+                        if (customResponse.isSuccess()) {
                             Intent intent = new Intent(ctx, RecoveryCodeActivity.class);
                             finish();
                             startActivity(intent);
