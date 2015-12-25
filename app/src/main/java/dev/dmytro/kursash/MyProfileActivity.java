@@ -42,6 +42,13 @@ public class MyProfileActivity extends Activity {
 
         service = new RetrofitService();
 
+        findViewById(R.id.btn_back_myprofile).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         findViewById(R.id.btn_myprofile_change).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

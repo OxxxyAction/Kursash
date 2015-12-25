@@ -24,5 +24,13 @@ public class ProfileActivity extends Activity{
                 startActivity(intent);
             }
         });
+
+        findViewById(R.id.btn_main_orders).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NewOrderActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

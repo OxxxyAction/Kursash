@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/toolBarColor"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize"
+        android:transitionName="actionBar">
+
+        <Button
+            android:id="@+id/btn_back_neworder"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/arrow_back"
+            android:scaleType="centerCrop"
+            android:layout_gravity="start|center_horizontal"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Новый заказ"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:id="@+id/txtView_toolbar_login" />
+    </android.support.v7.widget.Toolbar>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_margin="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/imgView_neworder"
+            android:src="@drawable/yourphoto"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Описание работы:"/>
+
+        <EditText
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:id="@+id/edt_neworder_description"
+            android:layout_height="100dp"
+            android:text="dfsdfdsfsdfklsdjfksdjflkdshafkjgsadjgfajksgfasjkgfakjfgjaksdf
+            dfahgfkjasgdfjhgasdfkjgasdfkjgasdfjkgakjsfgjaksdgf"
+            android:background="@drawable/edt_shape"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Отправить"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:textColor="@color/white"
+        android:background="@drawable/buttonselector"
+        android:id="@+id/btn_neworder_send" />
+
+</LinearLayout>

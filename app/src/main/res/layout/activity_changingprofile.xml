@@ -98,32 +98,7 @@
                 android:visibility="gone"
                 android:layout_gravity="center_horizontal"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Почта"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:textColor="@color/black"/>
-            <EditText
-                android:id="@+id/edt_profile_email"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:singleLine="true"
-                android:background="@drawable/edt_shape"
-                android:padding="5dp"
-                />
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:text="Ошибка"
-                android:id="@+id/txtView_changeprofile_err_email"
-                android:textSize="15sp"
-                android:textColor="#ffff353d"
-                android:gravity="center_horizontal"
-                android:visibility="gone"
-                android:layout_gravity="center_horizontal"/>
+
 
 
             <TextView

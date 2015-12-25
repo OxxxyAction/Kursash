@@ -61,6 +61,7 @@ public class LoginActivity extends Activity {
                         @Override
                         public void success(User user, Response response) {
                             RetrofitService.token = user.getAccessToken();
+                            RetrofitService.id = user.getId();
                             Intent intent = new Intent(ctx, ProfileActivity.class);
                             intent.putExtra("id", user.getId());
                             finish();

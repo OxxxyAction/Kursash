@@ -12,6 +12,16 @@
         android:elevation="4dp"
         android:minHeight="?attr/actionBarSize"
         android:transitionName="actionBar">
+
+        <Button
+            android:id="@+id/btn_back_myprofile"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/arrow_back"
+            android:scaleType="centerCrop"
+            android:layout_gravity="start|center_horizontal"
+
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

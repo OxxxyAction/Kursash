@@ -1,12 +1,15 @@
 package dev.dmytro.kursash;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import dev.dmytro.kursash.QueryObjects.Profile;
 import retrofit.Callback;
@@ -19,20 +22,45 @@ import retrofit.mime.TypedByteArray;
  */
 public class ChangingMyProfile extends Activity{
     RetrofitService service;
-    EditText name, firstname, email, age;
+    EditText name, surname, age;
     RadioGroup radioSex;
+    ProgressDialog pd;
+    Context ctx;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_changingprofile);
+        ctx = this;
         name = (EditText) findViewById(R.id.edt_profile_name);
-        firstname = (EditText) findViewById(R.id.edt_profile_lastname);
-        email = (EditText) findViewById(R.id.edt_profile_email);
+        surname = (EditText) findViewById(R.id.edt_profile_lastname);
         age = (EditText) findViewById(R.id.edt_profile_age);
         radioSex = (RadioGroup) findViewById(R.id.radioSex);
 
 
         service = new RetrofitService();
+        pd = ProgressDialog.show(ctx, "", "Загрузка...", true);
+        service.getProfile(getIntent().getIntExtra("id", -6), new Callback<Profile>() {
+            @Override
+            public void success(Profile profile, Response response) {
+                name.setText(profile.getName());
+                surname.setText(profile.getSurname());
+                if(profile.getGender().equalsIgnoreCase("мужчина"))
+               radioSex.check(radioSex.getChildAt(0).getId());
+                else
+               radioSex.check(radioSex.getChildAt(1).getId());
+                age.setText(profile.getAge()+"");
+                pd.dismiss();
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                pd.dismiss();
+                Toast.makeText(ctx, "Не удалось загрузить страницу =(", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
 
         findViewById(R.id.btn_back_changeprofile).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,10 +75,10 @@ public class ChangingMyProfile extends Activity{
             public void onClick(View view) {
                 Profile temp = new Profile();
                 temp.setAge(Integer.parseInt(age.getText().toString()) );
-                temp.setEmail( email.getText().toString() );
-                temp.setSurname(email.getText().toString());
-                temp.setName( email.getText().toString() );
-                temp.setGender( radioSex.getCheckedRadioButtonId()==0? "Мужчина" : "Женщина" );
+                temp.setSurname(surname.getText().toString());
+                temp.setName( name.getText().toString() );
+                temp.setGender( radioSex.getCheckedRadioButtonId()== radioSex.getChildAt(0).getId()? "Мужчина" : "Женщина" );
+                Log.d("Retrofit", "Id:"  + getIntent().getIntExtra("id", -6) + temp.getGender());
                 service.changeProfile(temp, getIntent().getIntExtra("id", -6), new Callback<Profile>() {
                     @Override
                     public void success(Profile profile, Response response) {
@@ -62,8 +90,9 @@ public class ChangingMyProfile extends Activity{
 
                     @Override
                     public void failure(RetrofitError error) {
-                        String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
-                        Log.d("Retrofit", json.toString());
+//                        String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
+                       // Log.d("Retrofit", json.toString());
+                        Log.d("Retrofit",error.getMessage());
                     }
                 });
             }

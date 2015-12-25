@@ -3,6 +3,34 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/reportToolBar"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="@color/toolBarColor"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize"
+        android:transitionName="actionBar">
+
+        <Button
+            android:id="@+id/btn_back_orders"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/arrow_back"
+            android:scaleType="centerCrop"
+            android:layout_gravity="start|center_horizontal"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:text="Мой профиль"
+            android:textSize="30sp"/>
+
+    </android.support.v7.widget.Toolbar>
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
