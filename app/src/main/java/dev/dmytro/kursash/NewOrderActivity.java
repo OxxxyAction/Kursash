@@ -66,12 +66,12 @@ public class NewOrderActivity extends Activity {
             public void onClick(View view) {
                 AlertDialog alert = new AlertDialog.Builder(NewOrderActivity.this).create();
                 alert.setTitle("Фото");
-                alert.setButton2("Выбрать из галерии", new DialogInterface.OnClickListener() {
+                alert.setButton2("Галерия", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dispatchTakePictureFromGalleryIntent();
                     }
                 });
-                alert.setButton("Сделать фото", new DialogInterface.OnClickListener() {
+                alert.setButton("Фото", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dispatchTakePictureIntent();
                     }
@@ -160,7 +160,7 @@ public class NewOrderActivity extends Activity {
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
         startActivityForResult(Intent.createChooser(intent,
-                "Select Picture"), REQUEST_CODE_PICK_IMAGE);
+                "Выберите фото"), REQUEST_CODE_PICK_IMAGE);
 
     }
 

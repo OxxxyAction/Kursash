@@ -115,6 +115,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:singleLine="true"
+                android:inputType="numberSigned"
+                android:maxLength="2"
                 android:background="@drawable/edt_shape"
                 android:padding="5dp"
                 />

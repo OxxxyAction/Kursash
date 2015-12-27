@@ -1,6 +1,7 @@
 package dev.dmytro.kursash;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ public class RegistrationActivity extends Activity {
     TextView username_err, email_err, password_err;
     RetrofitService service;
     Context ctx;
+    ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +60,11 @@ public class RegistrationActivity extends Activity {
             @Override
             public void onClick(View view) {
                 setErrorsInvisible();
+                pd = ProgressDialog.show(ctx, "", "Отправка данных", true);
                 service.registration(username.getText().toString(), email.getText().toString(), password.getText().toString(), new Callback<CustomResponse>() {
                     @Override
                     public void success(CustomResponse customResponse, Response response) {
+                        pd.dismiss();
                         if (customResponse.isSuccess()) {
                             Toast.makeText(ctx, "Регистрация прошла успешно!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(ctx, LoginActivity.class);
@@ -72,12 +76,13 @@ public class RegistrationActivity extends Activity {
 
                     @Override
                     public void failure(RetrofitError error) {
+                        pd.dismiss();
+                        if(error.getResponse()!=null){
                         Type type = new TypeToken<List<ValidationClass>>() {
                         }.getType();
                         List<ValidationClass> arr = (List<ValidationClass>) error.getBodyAs(type);
                         String json = new String(((TypedByteArray) error.getResponse().getBody()).getBytes());
                         Log.d("Retrofit", json.toString());
-                        if (error != null && arr.size() > 0) {
                             for (int i = 0; i < arr.size(); i++) {
                                 TextView temp = null;
                                 switch (arr.get(i).getField()) {

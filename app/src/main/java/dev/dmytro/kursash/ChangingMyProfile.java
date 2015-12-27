@@ -75,7 +75,12 @@ public class ChangingMyProfile extends Activity{
             @Override
             public void onClick(View view) {
                 Profile temp = new Profile();
+                if(Integer.parseInt(age.getText().toString()) > 0)
                 temp.setAge(Integer.parseInt(age.getText().toString()) );
+                else {
+                    Toast.makeText(ctx, "Введите корректный возраст", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 temp.setSurname(surname.getText().toString());
                 temp.setName( name.getText().toString() );
                 temp.setGender( radioSex.getCheckedRadioButtonId()== radioSex.getChildAt(0).getId()? "Мужчина" : "Женщина" );

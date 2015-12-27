@@ -71,14 +71,7 @@ public class LoginActivity extends Activity {
                             ed.putString("access_token", user.getAccessToken());
                             ed.apply();
                             ed.commit();
-                            /* test
-                            * */
-                            int id = sPref.getInt("id", -6);
-                            String token = sPref.getString("access_token", "unluckyyy");
-                            Log.d("Retrofit", id + token);
-                            /*
 
-                             */
                             Intent intent = new Intent(ctx, ProfileActivity.class);
                             intent.putExtra("id", user.getId());
                             finish();
@@ -100,7 +93,7 @@ public class LoginActivity extends Activity {
                                     txtViewError.setVisibility(View.VISIBLE);
                                     txtViewError.setText("");
                                     for (int i = 0; i < arr.size(); i++) {
-                                        txtViewError.append(arr.get(i).getMessage() + "\n");
+                                        txtViewError.append(arr.get(i).getMessage() + "\t");
                                     }
                                 } else {
                                     txtViewError.setVisibility(View.VISIBLE);

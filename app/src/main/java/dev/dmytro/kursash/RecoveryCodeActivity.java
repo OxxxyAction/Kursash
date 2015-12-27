@@ -1,6 +1,7 @@
 package dev.dmytro.kursash;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import retrofit.mime.TypedByteArray;
 public class RecoveryCodeActivity extends Activity {
     EditText edtCode, edtPass, edtSecondPass;
     TextView errCode, errPass;
+    ProgressDialog pd;
 
     RetrofitService service;
     Context ctx;
@@ -57,30 +59,34 @@ public class RecoveryCodeActivity extends Activity {
         findViewById(R.id.btn_recovery_sendpass).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
             errCode.setVisibility(View.GONE);
             errPass.setVisibility(View.GONE);
         if(!edtCode.getText().toString().equalsIgnoreCase("")){
         if(equalsPass()) {
+            pd = ProgressDialog.show(ctx, "", "Загрузка", true);
             service.sendCodeAndPass(edtCode.getText().toString(), edtPass.getText().toString(), new Callback<CustomResponse>() {
                 @Override
                 public void success(CustomResponse customResponse, Response response) {
                     if (customResponse.isSuccess()) {
+                        pd.dismiss();
                         Toast.makeText(ctx, "Пароль успешно восстановлен!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(ctx, LoginActivity.class);
                         startActivity(intent);
                     } else {
+                        pd.dismiss();
                         Toast.makeText(ctx, "При восстановлении пароля возникла ошибка, попробуйте снова.", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void failure(RetrofitError error) {
+                    if(error.getResponse()!=null){
                     Type type = new TypeToken<List<ValidationClass>>() {
                     }.getType();
                     List<ValidationClass> arr = (List<ValidationClass>) error.getBodyAs(type);
                     String json = new String(((TypedByteArray) error.getResponse().getBody()).getBytes());
                     Log.d("Retrofit", json.toString());
-                    if (error != null && arr.size() > 0) {
                         for (int i = 0; i < arr.size(); i++) {
                             TextView temp = null;
                             switch (arr.get(i).getField()) {

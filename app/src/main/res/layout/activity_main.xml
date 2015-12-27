@@ -18,15 +18,15 @@
             android:layout_height="wrap_content"
             android:text="@string/app_title"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:gravity="center"
-            android:textStyle="bold"
             android:id="@+id/txtView_toolbar_login" />
     </android.support.v7.widget.Toolbar>
 
     <Button
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
+        android:textSize="25sp"
         android:layout_marginTop="10dp"
         android:text="Мои заказы"
         android:paddingLeft="5dp"
@@ -38,7 +38,8 @@
 
     <Button
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
+        android:textSize="25sp"
         android:layout_marginTop="10dp"
         android:text="Сделать заказ"
         android:paddingLeft="5dp"
@@ -50,8 +51,9 @@
 
     <Button
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_marginTop="10dp"
+        android:textSize="25sp"
         android:text="Моя информация"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
@@ -62,9 +64,10 @@
 
     <Button
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_marginTop="10dp"
         android:text="Выйти"
+        android:textSize="25sp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:layout_gravity="center"
