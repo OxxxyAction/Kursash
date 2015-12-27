@@ -39,7 +39,7 @@ public class ChangingMyProfile extends Activity{
 
         service = new RetrofitService();
         pd = ProgressDialog.show(ctx, "", "Загрузка...", true);
-        service.getProfile(getIntent().getIntExtra("id", -6), new Callback<Profile>() {
+        service.getProfile(new Callback<Profile>() {
             @Override
             public void success(Profile profile, Response response) {
                 name.setText(profile.getName());
@@ -55,7 +55,8 @@ public class ChangingMyProfile extends Activity{
             @Override
             public void failure(RetrofitError error) {
                 pd.dismiss();
-                Toast.makeText(ctx, "Не удалось загрузить страницу =(", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ctx, "Не удалось получить сведения о профиле, попробуйте позже", Toast.LENGTH_LONG).show();
+                finish();
             }
         });
 
@@ -78,8 +79,7 @@ public class ChangingMyProfile extends Activity{
                 temp.setSurname(surname.getText().toString());
                 temp.setName( name.getText().toString() );
                 temp.setGender( radioSex.getCheckedRadioButtonId()== radioSex.getChildAt(0).getId()? "Мужчина" : "Женщина" );
-                Log.d("Retrofit", "Id:"  + getIntent().getIntExtra("id", -6) + temp.getGender());
-                service.changeProfile(temp, getIntent().getIntExtra("id", -6), new Callback<Profile>() {
+                service.changeProfile(temp,  new Callback<Profile>() {
                     @Override
                     public void success(Profile profile, Response response) {
                         Intent intent = new Intent(getApplicationContext(), MyProfileActivity.class);
@@ -92,7 +92,7 @@ public class ChangingMyProfile extends Activity{
                     public void failure(RetrofitError error) {
 //                        String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
                        // Log.d("Retrofit", json.toString());
-                        Log.d("Retrofit",error.getMessage());
+                     Toast.makeText(ctx, "Не удалось сохранить данные на сервер, попробуйте позже", Toast.LENGTH_LONG).show();
                     }
                 });
             }

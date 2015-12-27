@@ -59,7 +59,7 @@ public class MyProfileActivity extends Activity {
             }
         });
 
-        service.getProfile(getIntent().getIntExtra("id", -6), new Callback<Profile>() {
+        service.getProfile(new Callback<Profile>() {
             @Override
             public void success(Profile profile, Response response) {
                 name.setText(profile.getName());
@@ -73,7 +73,8 @@ public class MyProfileActivity extends Activity {
             @Override
             public void failure(RetrofitError error) {
                 pd.dismiss();
-                Toast.makeText(ctx, "Не удалось загрузить страницу =(", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ctx, "Не удалось получить сведения о профиле, побробуйте позже", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
 

@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -34,6 +36,7 @@ public class LoginActivity extends Activity {
     Context ctx;
     ProgressDialog pd;
     RetrofitService service;
+    SharedPreferences sPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,20 @@ public class LoginActivity extends Activity {
                         public void success(User user, Response response) {
                             RetrofitService.token = user.getAccessToken();
                             RetrofitService.id = user.getId();
+                            sPref = getSharedPreferences("UserData", MODE_PRIVATE);
+                            SharedPreferences.Editor ed = sPref.edit();
+                            ed.putInt("id", user.getId());
+                            ed.putString("access_token", user.getAccessToken());
+                            ed.apply();
+                            ed.commit();
+                            /* test
+                            * */
+                            int id = sPref.getInt("id", -6);
+                            String token = sPref.getString("access_token", "unluckyyy");
+                            Log.d("Retrofit", id + token);
+                            /*
+
+                             */
                             Intent intent = new Intent(ctx, ProfileActivity.class);
                             intent.putExtra("id", user.getId());
                             finish();
@@ -72,18 +89,24 @@ public class LoginActivity extends Activity {
                         @Override
                         public void failure(RetrofitError error) {
                             pd.dismiss();
-                            Type type = new TypeToken<List<ValidationClass>>() {}.getType();
-                            List<ValidationClass> arr = (List<ValidationClass>) error.getBodyAs(type);
-                            String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
-                            Log.d("Retrofit", json.toString());
-                            if(error!=null && arr.size()>0) {
+                            if (error.getResponse() != null) {
+                                Type type = new TypeToken<List<ValidationClass>>() {
+                                }.getType();
+                                List<ValidationClass> arr = (List<ValidationClass>) error.getBodyAs(type);
+                                String json = new String(((TypedByteArray) error.getResponse().getBody()).getBytes());
+                                Log.d("Retrofit", json.toString());
+                                if (error != null && arr.size() > 0) {
 
-                                txtViewError.setVisibility(View.VISIBLE);
-                                txtViewError.setText("");
-                                for (int i = 0; i < arr.size(); i++) {
-                                    txtViewError.append(arr.get(i).getMessage() + "\n");
+                                    txtViewError.setVisibility(View.VISIBLE);
+                                    txtViewError.setText("");
+                                    for (int i = 0; i < arr.size(); i++) {
+                                        txtViewError.append(arr.get(i).getMessage() + "\n");
+                                    }
+                                } else {
+                                    txtViewError.setVisibility(View.VISIBLE);
+                                    txtViewError.setText("Не удалось подключиться к серверу, попробуйте позже");
                                 }
-                            }else{
+                            } else {
                                 txtViewError.setVisibility(View.VISIBLE);
                                 txtViewError.setText("Не удалось подключиться к серверу, попробуйте позже");
                             }

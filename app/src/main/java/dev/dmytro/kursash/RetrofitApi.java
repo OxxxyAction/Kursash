@@ -57,4 +57,7 @@ public interface RetrofitApi {
                              @Part("date") String date,
                              @Part("descr") String descr,
                              @Part("Order[file]") TypedFile file, Callback<CustomResponse> callback);
+
+    @GET("/profiles/{id}")
+    public void getProfileWithOrders(@Path("id") int id, @Query("expand") String expand, @Query("access_token") String token, Callback<Profile> callback);
 }

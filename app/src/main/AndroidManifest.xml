@@ -9,7 +9,7 @@
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".LoginActivity"
+            android:name=".SplashActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,6 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".ProfileActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".MyProfileActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".RecoveryActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
@@ -24,6 +25,7 @@
         <activity android:name=".ChangingMyProfile" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".RegistrationActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".NewOrderActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".OrdersActivity" android:screenOrientation="portrait"/>
 
     </application>
 

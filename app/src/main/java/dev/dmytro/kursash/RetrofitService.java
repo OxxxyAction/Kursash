@@ -1,6 +1,5 @@
 package dev.dmytro.kursash;
 
-import android.telecom.Call;
 import android.util.Log;
 
 import dev.dmytro.kursash.QueryObjects.CustomResponse;
@@ -8,10 +7,7 @@ import dev.dmytro.kursash.QueryObjects.Order;
 import dev.dmytro.kursash.QueryObjects.Profile;
 import dev.dmytro.kursash.QueryObjects.User;
 import retrofit.Callback;
-import retrofit.ErrorHandler;
 import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.http.Query;
 import retrofit.mime.TypedFile;
 
 /**
@@ -35,7 +31,7 @@ public class RetrofitService {
         service.login(login, password, callback);
     }
 
-    public void getProfile(int id, Callback<Profile> callback){
+    public void getProfile(Callback<Profile> callback){
         service.getProfile(id, token, callback);
     }
 
@@ -43,7 +39,7 @@ public class RetrofitService {
         service.sendEmail(email, callback);
     }
 
-    public void changeProfile(Profile profile, int id, Callback<Profile> callback){
+    public void changeProfile(Profile profile, Callback<Profile> callback){
        Log.d("Retrofit", token);
         service.changeProfile(id, token, profile, callback);
     }
@@ -58,5 +54,9 @@ public class RetrofitService {
 
     public void sendNewOrder(Order order, TypedFile file, Callback<CustomResponse> callback){
         service.sendNewOrder(token, order.getId(), order.getDate(), order.getDescription(), file, callback);
+    }
+
+    public void getProfileWithOrders(Callback<Profile> callback){
+        service.getProfileWithOrders(id, "orders", token, callback);
     }
 }

@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/imgView_item_order"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="centerInside"
         android:src="@drawable/images"
         />
     <LinearLayout
@@ -13,20 +16,24 @@
         android:layout_marginLeft="10dp"
 
         android:orientation="vertical">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:layout_margin="5dp"
-        android:textSize="20sp"
-        android:text="$NAME$: ID"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:layout_margin="5dp"
-        android:textSize="15sp"
+        android:textSize="18sp"
+        android:id="@+id/txtView_item_order_description"
         android:text="Description: leroem ipsum mafaka buildnugnsd leroy dginkiyyyinks"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_margin="5dp"
+            android:textSize="18sp"
+            android:id="@+id/txtView_item_order_date"
+            android:text="Date: 25.06.2012"/>
     <LinearLayout
         android:layout_margin="5dp"
         android:layout_width="wrap_content"
@@ -34,17 +41,17 @@
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-            android:textColor="@color/black"
-
-            android:textSize="15sp"
-        android:text="Status:"/>
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:text="Статус:"/>
         <TextView
 
             android:textSize="15sp"
+            android:textStyle="bold"
+            android:id="@+id/txtView_item_order_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/green"
-            android:text="active"/>
+            android:text=""/>
 
     </LinearLayout>
     </LinearLayout>

@@ -5,7 +5,6 @@
     android:orientation="vertical"
     >
 
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -36,6 +35,19 @@
         android:textColor="@color/white"
         android:background="@drawable/buttonselector"
         android:id="@+id/btn_main_orders" />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Сделать заказ"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:background="@drawable/buttonselector"
+        android:id="@+id/btn_main_neworder" />
+
     <Button
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -47,6 +59,18 @@
         android:textColor="@color/white"
         android:background="@drawable/buttonselector"
         android:id="@+id/btn_main_info" />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Выйти"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:background="@drawable/buttonselector"
+        android:id="@+id/btn_main_exit" />
 
 
 

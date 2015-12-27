@@ -3,6 +3,8 @@ package dev.dmytro.kursash.QueryObjects;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 /**
  * Created by Dmytro on 17.12.2015.
  */
@@ -28,8 +30,18 @@ public class Profile {
         @SerializedName("email")
         @Expose
         private String email;
+        @SerializedName("orders")
+        private ArrayList<Order> orders;
 
-/**
+    public ArrayList<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(ArrayList<Order> orders) {
+        this.orders = orders;
+    }
+
+    /**
  *
  * @return
  * The id

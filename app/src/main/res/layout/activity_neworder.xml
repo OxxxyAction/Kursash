@@ -49,20 +49,29 @@
             android:id="@+id/imgView_neworder"
             android:src="@drawable/yourphoto"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Нажмите, чтобы выбрать файл"/>
 
         <TextView
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20sp"
             android:text="Описание работы:"/>
 
         <EditText
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:padding="5dp"
             android:layout_width="match_parent"
             android:id="@+id/edt_neworder_description"
             android:layout_height="100dp"
-            android:text="dfsdfdsfsdfklsdjfksdjflkdshafkjgsadjgfajksgfasjkgfakjfgjaksdf
-            dfahgfkjasgdfjhgasdfkjgasdfkjgasdfjkgakjsfgjaksdgf"
+
+            android:text=""
             android:background="@drawable/edt_shape"/>
 
         </LinearLayout>
